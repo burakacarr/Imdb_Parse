@@ -19,6 +19,7 @@ import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
+import javax.swing.JTextPane;
 
 public class Gui {
 
@@ -83,12 +84,17 @@ public class Gui {
 		frame.getContentPane().add(btnNewButton);
 		
 		
-		
 		list= new JList();
-		list.setBounds(96, 116, 128, 105);
+		list.setBounds(35, 110, 226, 105);
 		list.setVisible(true);
 		list.getBorder();
 		frame.getContentPane().add(list);
+		
+		JTextPane textPane = new JTextPane();
+		textPane.setBounds(35, 257, 346, 87);
+		textPane.setVisible(false);
+		frame.getContentPane().add(textPane);
+		
 		
 		list.addMouseListener(new MouseAdapter() {
 		    public void mouseClicked(MouseEvent evt) {
@@ -96,7 +102,11 @@ public class Gui {
 		        if (evt.getClickCount() == 2) {
 		            Parse prs = new Parse();
 		            try {
-						prs.LinkeGit(list2.getSelectedIndex());
+						String acýklama = prs.LinkeGit(list2.getSelectedIndex());
+						textPane.setText(acýklama.trim());
+						textPane.setVisible(true);
+						
+						textPane.setText(acýklama.trim());
 					} catch (IOException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
@@ -111,9 +121,11 @@ public class Gui {
 		frame.getContentPane().add(textField);
 		textField.setColumns(10);
 		
-		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setBounds(332, 132, 160, 58);
-		frame.getContentPane().add(lblNewLabel);
+		
+		
+		
+		
+		
 		
 		
 	}

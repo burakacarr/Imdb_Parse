@@ -18,7 +18,7 @@ public  class Parse {
 		}
 	}
 	
-	 public void LinkeGit(int i) throws ClientProtocolException, IOException {
+	 public String LinkeGit(int i) throws ClientProtocolException, IOException {
 		String link = Film.Filmler.get(i).getLink();
 		Starter str = new Starter();
 		StringBuffer bfr = str.StartAcýklamaDownload(link);
@@ -27,6 +27,8 @@ public  class Parse {
 		String sonlandýrma = kontrol.substring(kontrol.indexOf(kontrolKelimesi)+46,kontrol.length());
 		
 		System.out.println(sonlandýrma.substring(0,sonlandýrma.indexOf("<")));
+		
+		return sonlandýrma.substring(0,sonlandýrma.indexOf("<"));
 		 
 	}
 
